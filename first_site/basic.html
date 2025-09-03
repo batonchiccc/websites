@@ -37,12 +37,14 @@
                 text-shadow: 0 0 10px rgba(215, 100, 249, 0.2);
             }
 
-            .subtitle{
-                font-size: 20px;
+            h2{
+                font-size: 36px;
                 opacity: 0.9;
                 max-width: 600px;
                 margin: 0 auto;
             }
+
+            
 
             .game-container{
                 display: grid;
@@ -79,8 +81,21 @@
                 font-weight: bold;
             }
 
+            .float-box{
+                width: 30%;
+                float: left;
+            }
+
+            .bot-right{
+                align-self: flex-end;
+                text-align: right;
+                justify-content: flex-end;
+                border: 1px solid #b09db4;
+            }
+
             footer {
                 text-align: center;
+                display: flex;
                 padding: 20px;
                 margin-top: auto;
                 background: rgb(41, 41, 41);
@@ -94,8 +109,8 @@
     <body>
         <div id="main-page">
             <header>
-                <h1>Let's explore references in video games!</h1>
-                <p class="subtitle">Click'em cards to start!</p>
+                <h1>Explore references in video games</h1>
+                <h2>Click'em cards to start!</h2>
             </header>
 
             <div class="game-container">
@@ -120,11 +135,30 @@
                 </div>
             </div>
         </div>
+        <div>
+            
+        </div>
     </body>
 
     <footer>
-        <address>
-            Vostrikov Platon | <a href="tel:+79689173848">+79689173848</a> | <a href="mailto:wosplaton@gmail.com">wosplaton@gmail.com </a> 
-        </address>
+        <div class="float-box">
+            <pre style="text-align: left;">
+     []  ,----.___
+   __||_/___      '.
+  / O||    /|       )
+ /   ""   / /   =._/
+/________/ /
+|________|/  
+            </pre>
+        </div>
+        <div class="bot-right">
+            <div>
+                <abbr title="A reference to ENA Dream BBQ">Fantasized BBQ</abbr>
+                <h3>If you want to provide more examples send them here</h3>
+                <address>
+                    Vostrikov Platon | <a href="tel:+79689173848">+79689173848</a> | <a href="mailto:wosplaton@gmail.com">wosplaton@gmail.com</a> 
+                </address>
+            </div>
+        </div>
     </footer>
 </html>
