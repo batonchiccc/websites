@@ -6,6 +6,7 @@
         <meta name="author" content="Vostrikov Platon">
         <meta name="description" content="Main page to find title you need">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="file:///c:/Users/baton/Documents/My%20Code/Web/websites/first_site//favicon.ico" sizes="any">
         <title>Fantisized BBQ</title>
         <style>
 
@@ -82,15 +83,19 @@
             }
 
             .float-box{
-                width: 30%;
+                width: 50%;
                 float: left;
             }
 
             .bot-right{
-                align-self: flex-end;
+                width: 50%;
+                align-self: center;
                 text-align: right;
-                justify-content: flex-end;
-                border: 1px solid #b09db4;
+            }
+
+            .shape {
+                border: #7F5CDB; 
+                border-width: 10px;
             }
 
             footer {
@@ -108,28 +113,47 @@
 
     <body>
         <div id="main-page">
-            <header>
+            <header id="page-start">
                 <h1>Explore references in video games</h1>
                 <h2>Click'em cards to start!</h2>
+                <ol style="margin: 20px; font-size: 20px; text-align: left; padding-left: 20px;">
+                    <li><a>1st page</a>
+                        <ul>
+                            <li><a href="#ENA">ENA Dream BBQ</a></li>
+                            <li><a href="#EnterTheGungeon">Enter the Gungeon</a></li>
+                            <li><a href="#DeadCells">Dead Cells</a></li>
+                            <li><a href="#tBoI">The Binding of Isaac</a></li>
+                        </ul>
+                    </li>
+                </ol>
             </header>
 
+            <div>
+                <img src="https://www.horrorgeeklife.com/wp-content/uploads/2025/03/ENA-Dream-BBQ-Feature-1068x600.jpeg" usemap="#shapes" alt="ENA parts">
+                <map name="shapes">
+                    <area shape="polygon" coords="" class="shape">
+                    <area shape="rectangle" coords="" class="shape">
+                    <area shape="circle" coords="30, 30, 30" class="shape" alt="Circle">
+                </map>
+            </div>
+
             <div class="game-container">
-                <div class="game-card" onclick="redirectToReferences('ENA Dream BBQ')">
+                <div id="ENA" class="game-card" onclick="redirectToReferences('ENA Dream BBQ')">
                     <img src="https://static.wikia.nocookie.net/enajoelg/images/2/2a/DreamBBQLogo.png/revision/latest/scale-to-width-down/1000?cb=20230502174910&path-prefix=ru" alt="ENA Dream BBQ" class="game-image">
                     <div class="game-title">ƎNA Dream BBQ</div>
                 </div>
 
-                <div class="game-card" onclick="redirectToReferences('Enter the Gungeon')">
+                <div id="EnterTheGungeon" class="game-card" onclick="redirectToReferences('Enter the Gungeon')">
                     <img src="https://upload.wikimedia.org/wikipedia/en/1/16/Enter_the_Gungeon_cover_art.jpeg" alt="Enter the Gungeon" class="game-image">
                     <div class="game-title">Enter the Gungeon</div>
                 </div>
 
-                <div class="game-card" onclick="redirectToReferences('Dead Cells')">
+                <div id="DeadCells" class="game-card" onclick="redirectToReferences('Dead Cells')">
                     <img src="https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.5/c_scale,w_900/ncom/software/switch/70050000036097/0cb277b834be1837f0abdf31658e7066ea0b1841c2e9af6dc89dec57c10227a9" alt="Dead Cells" class="game-image">
                     <div class="game-title">Dead Cells</div>
                 </div>
             
-                <div class="game-card" onclick="redirectToReferences('The Binding of Isaac')">
+                <div id="tBoI" class="game-card" onclick="redirectToReferences('The Binding of Isaac')">
                     <img src="https://cdn1.epicgames.com/dbf5337d024e457bac68f2059112da86/offer/EGS_TheBindingofIsaacRepentance_NicalisIncEdmundMcmillen_S1-2560x1440-d481d9ecc784cf008bfed4c708caae68.jpg" alt="The Binding of Isaac" class="game-image">
                     <div class="game-title">The Binding of Isaac</div>
                 </div>
