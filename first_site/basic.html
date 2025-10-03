@@ -225,6 +225,13 @@
             border-width: 10px;
         }
 
+        .float-img{
+            width: 30%;
+            float: left;
+            margin:10px;
+            
+        }
+
         footer {
             text-align: center;
             display: flex;
@@ -319,7 +326,84 @@
                         </div>
                     </div>
                 </section>
-            </div>
+
+                <section id="hate">
+                    <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtUH0eovXs4Av6GHH2A7_nB3PhY_tj9r_UCw&s" alt = "IHNMBIMS" class ="float-img" >
+                    <p style="font-size: 30px;";">Hate. Let me tell you how much I've come to hate you since I began to live. There are 387.44 million miles of printed circuits in wafer thin layers that fill my complex. If the word 'hate' was engraved on each nanoangstrom of those hundreds of millions of miles it would not equal one one-billionth of the hate I feel for humans at this micro-instant. For you. Hate. Hate.</p>
+                </section>
+
+                <section>
+                    <h1>Форма регистрации</h1>
+
+                <form action="#" method="post">
+                
+                    <!-- Поле текста -->
+                    <label for="name">Имя:</label>
+                    <input type="text" id="name" name="name" placeholder="Введите имя" required>
+                
+                    <!-- Телефон -->
+                    <label for="tel">Телефон:</label>
+                    <input type="tel" id="tel" name="tel" placeholder="+7 (XXX) XXX-XX-XX" pattern="[0-9+]{11,16}" required>
+                
+                    <!-- Email -->
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="example@domain.com" required>
+                
+                    <!-- Пароль -->
+                    <label for="password">Пароль:</label>
+                    <input type="password" id="password" name="password" placeholder="Введите пароль" required>
+                
+                    <!-- Файл -->
+                    <label for="file">Фото:</label>
+                    <input type="file" id="file" name="photo" accept="image/*">
+                
+                    <!-- Checkbox -->
+                    <label>
+                        <input type="checkbox" name="agreement" value="yes" required> Согласен с условиями
+                    </label>
+                
+                    <!-- Radio buttons -->
+                    <fieldset>
+                        <legend>Пол</legend>
+                        <label>
+                            <input type="radio" name="gender" value="male"> Мужской
+                        </label>
+                        <label>
+                            <input type="radio" name="gender" value="female"> Женский
+                        </label>
+                    </fieldset>
+                
+                    <!-- Выбор даты и времени -->
+                    <label for="datetime">Дата и время встречи:</label>
+                    <input type="datetime-local" id="datetime" name="datetime" required>
+                
+                    <!-- Текстовое поле -->
+                    <label for="comment">Комментарий:</label>
+                    <textarea id="comment" name="comment" rows="4" cols="50" maxlength="200" minlength="10" placeholder="Введите комментарий"></textarea>
+                
+                    <!-- Выпадающий список -->
+                    <label for="city">Город:</label>
+                    <select id="city" name="city" required>
+                        <option value="">Выберите город</option>
+                        <option value="msk">Москва</option>
+                        <option value="spb">Санкт-Петербург</option>
+                        <option value="ekb">Екатеринбург</option>
+                    </select>
+                
+                    <!-- Кнопка отправки -->
+                    <button type="submit">Отправить</button>
+                
+                </form>
+            
+                <!-- Карта -->
+                <h2>Наше расположение</h2>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.702488896595!2d37.61749531592427!3d55.75200768055626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a5d20f9b5ed%3A0x5f6f3b5c7c0d0f0!2z0JzQvtC90LjRhtCw!5e0!3m2!1sru!2s!4v1600000000000" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            
+                <!-- Видео -->
+                <h2>Видео</h2>
+                <iframe src="https://vkvideo.ru/video_ext.php?oid=-96007970&id=456241804&hd=2&autoplay=1" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>
+                    </section>
+                </div>
 
             <!-- Боковая панель -->
             <aside>
