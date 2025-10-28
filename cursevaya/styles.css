@@ -22,7 +22,7 @@ body {
     border-bottom: 2px solid rgba(255, 255, 255, 0.1);
 }
 .navbar-container {
-    max-width: 1200px;
+    max-width: 1600px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -67,6 +67,10 @@ body {
     border-radius: 20%;
     font-weight: 600;
     cursor: pointer;
+    
+}
+.lang-toggle:active{
+    background-color: rgba(145, 145, 145, 0.495);
 }
 
 .login-btn {
@@ -85,7 +89,7 @@ body {
     box-shadow: 0 0 16px rgba(185, 78, 175, 0.4);
 }
 .container {
-    max-width: 1600px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 20px;
     margin-top: 40px; 
