@@ -2,443 +2,292 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Портфолио разработчика игр</title>
+    <meta name="author" content="Vostrikov Platon">
+    <meta name="description" content="Main page of my portfolio">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="favicon_portfolio.ico" sizes="any">
+    
+    <title>Batonchic's Portfoolio</title>
+
+    <link rel="stylesheet" href="styles.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #fff;
-            min-height: 100vh;
-            line-height: 1.6;
-        }
-
-        /* Верхняя панель навигации */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(10, 10, 20, 0.95);
-            padding: 0 20px;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .navbar-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 70px;
-        }
-
-        .navbar-logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-decoration: none;
-        }
-
-        .navbar-menu {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-        }
-
-        .navbar-item a {
-            color: #a9a9b3;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            padding: 8px 12px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .navbar-item a:hover {
-            color: #fff;
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .navbar-item a.active {
-            color: #45b7d1;
-            background: rgba(69, 183, 209, 0.15);
-        }
-
-        .login-btn {
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            color: white;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-        }
-
-        .login-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            margin-top: 90px; /* Отступ для фиксированной панели */
-        }
-
-        header {
-            text-align: center;
-            padding: 60px 20px 40px;
-            position: relative;
-        }
-
-        .logo {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-
-        .tagline {
-            font-size: 1.2rem;
-            color: #a9a9b3;
-            max-width: 600px;
-            margin: 0 auto;
-            font-weight: 300;
-        }
-
-        .sections-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
-        }
-
-        .section-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .section-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .section-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .section-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .section-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .section-title {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .section-description {
-            color: #b8b8c4;
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-        }
-
-        .section-link {
-            display: inline-block;
-            padding: 12px 28px;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
-        }
-
-        .section-link:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
-        }
-
-        .projects-section {
-            margin: 60px 0;
-            padding: 40px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            background: linear-gradient(45deg, #45b7d1, #96ceb4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .section-header p {
-            color: #a9a9b3;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .projects-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .project-item {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 15px;
-            padding: 25px;
-            transition: all 0.3s ease;
-            border-left: 4px solid #45b7d1;
-        }
-
-        .project-item:hover {
-            background: rgba(255, 255, 255, 0.06);
-            transform: translateX(10px);
-        }
-
-        .project-title {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            color: #45b7d1;
-        }
-
-        .project-roles {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 15px;
-        }
-
-        .role-tag {
-            background: rgba(255, 107, 107, 0.2);
-            color: #ff6b6b;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        .role-tag.designer {
-            background: rgba(78, 205, 196, 0.2);
-            color: #4ecdc4;
-        }
-
-        .role-tag.sound {
-            background: rgba(69, 183, 209, 0.2);
-            color: #45b7d1;
-        }
-
-        .project-description {
-            color: #b8b8c4;
-            font-size: 0.95rem;
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px 0;
-            color: #a9a9b3;
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            .navbar-container {
-                flex-wrap: wrap;
-                height: auto;
-                padding: 15px 0;
-            }
-            
-            .navbar-menu {
-                gap: 15px;
-                margin: 10px 0;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .logo {
-                font-size: 2.5rem;
-            }
-            
-            .sections-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .projects-list {
-                grid-template-columns: 1fr;
-            }
-            
-            .container {
-                margin-top: 150px;
-            }
-        }
+        /* Дополнительные стили для заданий */
+        .hidden { display: none; }
+        .highlight { background-color: #ffeb3b; }
+        .clickable { cursor: pointer; }
+        .section-content { padding: 10px; }
+        .project-card { border: 1px solid #ccc; margin: 5px; padding: 10px; }
+        .active-section { display: block; }
+        .inactive-section { display: none; }
     </style>
 </head>
+
 <body>
-    <!-- Верхняя панель навигации -->
     <nav class="navbar">
         <div class="navbar-container">
             <a href="#" class="navbar-logo">Port<s>fool</s>io</a>
             <ul class="navbar-menu">
-                <li class="navbar-item"><a href="#programming" class="active">Программирование</a></li>
-                <li class="navbar-item"><a href="#game-design">Гейм-дизайн</a></li>
-                <li class="navbar-item"><a href="#sound-design">Саунд-дизайн</a></li>
-                <li class="navbar-item"><a href="#projects">Проекты</a></li>
-                <li class="navbar-item"><a href="#education">Образование</a></li>
-                <li class="navbar-item"><a href="#hobbies">Хобби</a></li>
+                <li class="navbar-item"><a href="" >§ Обо мне</a></li>
+                <li class="navbar-item"><a href="" ># Проекты</a></li>
+                <li class="navbar-item"><a href="" >// Код</a></li>
+                <li class="navbar-item"><a href="" >b Саунд</a></li>
+                <li class="navbar-item"><a href="" >‡ Графика</a></li>
+                <li class="navbar-item"><button class="lang-toggle" id="lang-toggle"><b>RU</b></button></li>
             </ul>
-            <button class="login-btn">Войти</button>
         </div>
     </nav>
 
     <div class="container">
         <header>
-            <h1 class="logo">GameDev Portfolio</h1>
-            <p class="tagline">Разработка игр с душой и кодом. Программирование, гейм-дизайн и саунд-дизайн в одном лице.</p>
+            <h1 class="logo">Востриков Платон</h1>
+            <h2 class="tagline">Разработчик игр и не только</h2>
         </header>
 
         <div class="sections-grid">
-            <div class="section-card">
-                <div class="section-icon">💻</div>
-                <h2 class="section-title">Программирование</h2>
-                <p class="section-description">Разработка игровых движков, систем механик и оптимизация производительности на Unity, Unreal Engine и собственных решениях.</p>
-                <a href="#programming" class="section-link">Посмотреть работы</a>
-            </div>
+            <!-- Задание 1: Добавление элементов -->
+            <section id="about-section">
+                <h2>Обо мне</h2>
+                <p>Я начинающий разработчик с опытом в Unity и Python.</p>
+                <button id="toggle-skills">Показать навыки</button>
+                <div id="skills-list" class="hidden">
+                    <ul>
+                        <li>Unity</li>
+                        <li>C#</li>
+                        <li>Python</li>
+                        <li>Blender</li>
+                    </ul>
+                </div>
+            </section>
 
-            <div class="section-card">
-                <div class="section-icon">🎮</div>
-                <h2 class="section-title">Гейм-дизайн</h2>
-                <p class="section-description">Создание игровых механик, балансировка, проектирование уровней и пользовательского опыта.</p>
-                <a href="#game-design" class="section-link">Посмотреть работы</a>
-            </div>
+            <!-- Задание 2: Динамическое изменение -->
+            <section id="projects-section">
+                <h2>Проекты</h2>
+                <div id="projects-container">
+                    <div class="project-card" data-id="1">
+                        <h3>Игра "Прыг-скок"</h3>
+                        <p>Платформер на Unity</p>
+                    </div>
+                </div>
+                <button id="add-project">Добавить проект</button>
+            </section>
 
-            <div class="section-card">
-                <div class="section-icon">🎵</div>
-                <h2 class="section-title">Саунд-дизайн</h2>
-                <p class="section-description">Создание атмосферной музыки, звуковых эффектов и аудио-систем для полного погружения в игру.</p>
-                <a href="#sound-design" class="section-link">Посмотреть работы</a>
-            </div>
+            <!-- Задание 3: Обработка событий -->
+            <section id="events-section">
+                <h2>События</h2>
+                <p>Нажмите на этот текст, чтобы выделить его</p>
+                <input type="text" id="input-field" placeholder="Введите текст">
+                <button id="clear-input">Очистить</button>
+            </section>
+
+            <!-- Задание 4: Управление классами -->
+            <section id="classes-section">
+                <h2>Управление классами</h2>
+                <p id="class-paragraph">Этот текст изменит стиль при нажатии</p>
+                <button id="toggle-class">Переключить стиль</button>
+            </section>
+
+            <!-- Задание 5: Управление формой -->
+            <section id="form-section">
+                <h2>Форма обратной связи</h2>
+                <form id="feedback-form">
+                    <label for="name">Имя:</label>
+                    <input type="text" id="name" name="name" required><br><br>
+                    
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required><br><br>
+                    
+                    <label for="message">Сообщение:</label><br>
+                    <textarea id="message" name="message" rows="4" cols="50"></textarea><br><br>
+                    
+                    <button type="submit">Отправить</button>
+                </form>
+                <div id="form-status"></div>
+            </section>
+
+            <!-- Задание 6: Управление содержимым -->
+            <section id="content-section">
+                <h2>Управление содержимым</h2>
+                <div id="content-display">
+                    <p>Исходный текст</p>
+                </div>
+                <button id="update-content">Обновить содержимое</button>
+            </section>
+
+            <!-- Задание 7: Управление атрибутами -->
+            <section id="attributes-section">
+                <h2>Управление атрибутами</h2>
+                <img id="dynamic-image" src="placeholder.jpg" alt="Стандартное изображение" width="200">
+                <button id="change-image">Изменить изображение</button>
+                <a id="dynamic-link" href="https://example.com" target="_blank">Ссылка на сайт</a>
+                <button id="update-link">Обновить ссылку</button>
+            </section>
+
+            <!-- Задание 8: Переключение видимости -->
+            <section id="visibility-section">
+                <h2>Переключение видимости</h2>
+                <div id="visible-content">
+                    <p>Этот контент можно скрыть</p>
+                </div>
+                <button id="toggle-visibility">Скрыть/Показать</button>
+            </section>
+
+            <!-- Задание 9: Список задач -->
+            <section id="todo-section">
+                <h2>Список задач</h2>
+                <input type="text" id="todo-input" placeholder="Добавить задачу">
+                <button id="add-todo">Добавить</button>
+                <ul id="todo-list"></ul>
+            </section>
+
+            <!-- Задание 10: Переключение секций -->
+            <section id="nav-section">
+                <h2>Навигация по секциям</h2>
+                <nav>
+                    <button class="section-toggle" data-target="about-section">О себе</button>
+                    <button class="section-toggle" data-target="projects-section">Проекты</button>
+                    <button class="section-toggle" data-target="events-section">События</button>
+                </nav>
+                
+                <!-- Секции для переключения -->
+                <section id="about-section-content" class="active-section">
+                    <h3>О себе</h3>
+                    <p>Информация о себе</p>
+                </section>
+                <section id="projects-section-content" class="inactive-section">
+                    <h3>Проекты</h3>
+                    <p>Список проектов</p>
+                </section>
+                <section id="events-section-content" class="inactive-section">
+                    <h3>События</h3>
+                    <p>Обработка событий</p>
+                </section>
+            </section>
         </div>
-
-        <div class="projects-section">
-            <div class="section-header">
-                <h2>Все проекты</h2>
-                <p>Полный список разработанных игр и проектов с указанием моих ролей в каждом из них</p>
-            </div>
-
-            <div class="projects-list">
-                <div class="project-item">
-                    <h3 class="project-title">Cosmic Odyssey</h3>
-                    <div class="project-roles">
-                        <span class="role-tag">Программист</span>
-                        <span class="role-tag designer">Гейм-дизайнер</span>
-                    </div>
-                    <p class="project-description">Космический симулятор с открытым миром, где игрок исследует галактику и строит свою империю.</p>
-                </div>
-
-                <div class="project-item">
-                    <h3 class="project-title">Neon Runner</h3>
-                    <div class="project-roles">
-                        <span class="role-tag">Программист</span>
-                        <span class="role-tag sound">Саунд-дизайнер</span>
-                    </div>
-                    <p class="project-description">Ритм-раннер в неоновом стиле с динамической музыкой, которая влияет на геймплей.</p>
-                </div>
-
-                <div class="project-item">
-                    <h3 class="project-title">Mystic Forest</h3>
-                    <div class="project-roles">
-                        <span class="role-tag designer">Гейм-дизайнер</span>
-                        <span class="role-tag sound">Саунд-дизайнер</span>
-                    </div>
-                    <p class="project-description">Приключенческая игра с элементами головоломок в волшебном лесу с уникальной атмосферой.</p>
-                </div>
-
-                <div class="project-item">
-                    <h3 class="project-title">Battle Arena VR</h3>
-                    <div class="project-roles">
-                        <span class="role-tag">Программист</span>
-                        <span class="role-tag designer">Гейм-дизайнер</span>
-                        <span class="role-tag sound">Саунд-дизайнер</span>
-                    </div>
-                    <p class="project-description">Мультиплеерная VR-арена для сражений с друзьями в виртуальной реальности.</p>
-                </div>
-
-                <div class="project-item">
-                    <h3 class="project-title">Pixel Quest</h3>
-                    <div class="project-roles">
-                        <span class="role-tag">Программист</span>
-                    </div>
-                    <p class="project-description">Ретро-платформер с пиксельной графикой и классическими геймплейными механиками.</p>
-                </div>
-
-                <div class="project-item">
-                    <h3 class="project-title">Ambient Worlds</h3>
-                    <div class="project-roles">
-                        <span class="role-tag sound">Саунд-дизайнер</span>
-                    </div>
-                    <p class="project-description">Коллекция атмосферных звуковых ландшафтов для медитации и релаксации.</p>
-                </div>
-            </div>
-        </div>
-
-        <footer>
-            <p>© 2024 GameDev Portfolio | Создано с любовью к играм</p>
-        </footer>
     </div>
+
+    <script>
+        // Задание 1: Добавление элементов
+        document.getElementById('toggle-skills').addEventListener('click', function() {
+            const skillsList = document.getElementById('skills-list');
+            if (skillsList.classList.contains('hidden')) {
+                skillsList.classList.remove('hidden');
+                this.textContent = 'Скрыть навыки';
+            } else {
+                skillsList.classList.add('hidden');
+                this.textContent = 'Показать навыки';
+            }
+        });
+
+        // Задание 2: Динамическое изменение
+        let projectCounter = 1;
+        document.getElementById('add-project').addEventListener('click', function() {
+            projectCounter++;
+            const container = document.getElementById('projects-container');
+            const newCard = document.createElement('div');
+            newCard.className = 'project-card';
+            newCard.setAttribute('data-id', projectCounter);
+            newCard.innerHTML = `
+                <h3>Проект #${projectCounter}</h3>
+                <p>Описание проекта #${projectCounter}</p>
+            `;
+            container.appendChild(newCard);
+        });
+
+        // Задание 3: Обработка событий
+        document.querySelector('#events-section p').addEventListener('click', function() {
+            this.classList.toggle('highlight');
+        });
+
+        document.getElementById('clear-input').addEventListener('click', function() {
+            document.getElementById('input-field').value = '';
+        });
+
+        // Задание 4: Управление классами
+        document.getElementById('toggle-class').addEventListener('click', function() {
+            document.getElementById('class-paragraph').classList.toggle('highlight');
+        });
+
+        // Задание 5: Управление формой
+        document.getElementById('feedback-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            if (name && email && message) {
+                document.getElementById('form-status').innerHTML = '<p style="color:green;">Форма успешно отправлена!</p>';
+                this.reset();
+            } else {
+                document.getElementById('form-status').innerHTML = '<p style="color:red;">Заполните все поля!</p>';
+            }
+        });
+
+        // Задание 6: Управление содержимым
+        document.getElementById('update-content').addEventListener('click', function() {
+            document.getElementById('content-display').innerHTML = '<p>Новое содержимое добавлено динамически!</p>';
+        });
+
+        // Задание 7: Управление атрибутами
+        document.getElementById('change-image').addEventListener('click', function() {
+            const img = document.getElementById('dynamic-image');
+            img.setAttribute('src', 'new-image.jpg');
+            img.setAttribute('alt', 'Новое изображение');
+        });
+
+        document.getElementById('update-link').addEventListener('click', function() {
+            const link = document.getElementById('dynamic-link');
+            link.setAttribute('href', 'https://github.com');
+            link.textContent = 'Ссылка на GitHub';
+        });
+
+        // Задание 8: Переключение видимости
+        document.getElementById('toggle-visibility').addEventListener('click', function() {
+            const content = document.getElementById('visible-content');
+            if (content.style.display === 'none') {
+                content.style.display = 'block';
+                this.textContent = 'Скрыть/Показать';
+            } else {
+                content.style.display = 'none';
+                this.textContent = 'Скрыть/Показать';
+            }
+        });
+
+        // Задание 9: Список задач
+        document.getElementById('add-todo').addEventListener('click', function() {
+            const input = document.getElementById('todo-input');
+            const text = input.value.trim();
+            if (text) {
+                const list = document.getElementById('todo-list');
+                const item = document.createElement('li');
+                item.textContent = text;
+                item.addEventListener('click', function() {
+                    this.classList.toggle('highlight');
+                });
+                list.appendChild(item);
+                input.value = '';
+            }
+        });
+
+        // Задание 10: Переключение секций
+        document.querySelectorAll('.section-toggle').forEach(button => {
+            button.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-target');
+                
+                // Скрыть все секции
+                document.querySelectorAll('[id$="-content"]').forEach(section => {
+                    section.classList.remove('active-section');
+                    section.classList.add('inactive-section');
+                });
+                
+                // Показать целевую секцию
+                const targetSection = document.getElementById(targetId + '-content');
+                if (targetSection) {
+                    targetSection.classList.remove('inactive-section');
+                    targetSection.classList.add('active-section');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
-
