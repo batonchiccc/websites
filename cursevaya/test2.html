@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelPulse Studios | Game Developer Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-tertiary: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --accent-cyan: #0ea5e9;
+            --accent-purple: #a855f7;
+            --accent-amber: #f59e0b;
+            --border-color: #334155;
+            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --border-radius: 1.5rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 4rem;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 30% 50%, rgba(14, 165, 233, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 70% 30%, rgba(168, 85, 247, 0.03) 0%, transparent 40%);
+        }
+
+        /* Navigation Styles */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 800;
+            font-size: 1.5rem;
+            background: linear-gradient(to right, var(--accent-cyan), var(--accent-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: var(--accent-cyan);
+            font-size: 1.75rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--text-primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, var(--accent-cyan), var(--accent-purple));
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .lang-toggle {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            font-weight: 500;
+            padding: 0.4rem 1rem;
+            border-radius: 1.25rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-left: 1rem;
+        }
+
+        .lang-toggle:hover {
+            background: rgba(30, 41, 59, 0.7);
+            border-color: var(--accent-cyan);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 4.5rem;
+            left: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid var(--border-color);
+            padding: 1.5rem 0;
+            transform: translateY(-150%);
+            transition: transform 0.4s ease;
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            transform: translateY(0);
+        }
+
+        .mobile-menu .nav-links {
+            flex-direction: column;
+            gap: 1.5rem;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            background: linear-gradient(to right, var(--accent-cyan), var(--accent-purple), var(--accent-amber));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 1.25rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-size: 1.05rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, var(--accent-cyan), var(--accent-purple));
+            color: white;
+            box-shadow: 0 5px 15px rgba(14, 165, 233, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(14, 165, 233, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: white;
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(30, 41, 59, 0.8);
+            transform: translateY(-3px);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-15px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-7px);
+            }
+        }
+
+        /* Skills Section */
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--accent-cyan), var(--accent-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(14, 165, 233, 0.5);
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.1) 0%, transparent 70%);
+            transform: scale(0);
+            transition: var(--transition);
+            z-index: 0;
+        }
+
+        .skill-card:hover::before {
+            transform: scale(1);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .skill-programming .skill-icon { color: var(--accent-cyan); }
+        .skill-sound .skill-icon { color: var(--accent-purple); }
+        .skill-art .skill-icon { color: var(--accent-amber); }
+
+        .skill-card h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .skill-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .skill-tag {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+        }
+
+        /* Projects Section */
+        .projects-section {
+            background: rgba(15, 23, 42, 0.7);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background: var(--bg-secondary);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(168, 85, 247, 0.5);
+        }
+
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        .project-content {
+            padding: 1.75rem;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .project-role {
+            color: var(--accent-cyan);
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tag {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-purple);
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .project-link:hover {
+            color: var(--accent-cyan);
+            gap: 0.75rem;
+        }
+
+        .view-all {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .contact-info h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, var(--accent-amber), var(--accent-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .contact-info p {
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+        }
+
+        .contact-icon {
+            min-width: 36px;
+            height: 36px;
+            background: rgba(245, 158, 11, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-amber);
+            font-size: 1.1rem;
+        }
+
+        .contact-text {
+            color: var(--text-secondary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(30, 41, 59, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 1.25rem;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: var(--accent-amber);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .contact-form {
+            background: var(--bg-secondary);
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-amber);
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(7, 19, 35, 0.9);
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-cyan);
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-description {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .lang-toggle {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section {
+                padding: 4rem 1.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-container {
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.75rem;
+            }
+
+            .mobile-menu .nav-links {
+                gap: 1.25rem;
+            }
+
+            .mobile-menu .lang-toggle {
+                display: block;
+                width: 100%;
+                justify-content: center;
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+                border: none;
+                background: rgba(30, 41, 59, 0.7);
+            }
+        }
+
+        /* Animations and Effects */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .pulse {
+            animation: pulse 4s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+            100% { opacity: 0.3; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-gamepad"></i>
+                <span data-i18n="site_title">PixelPulse Studios</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="#home" class="active" data-i18n="nav_home">Home</a>
+                <a href="#projects" data-i18n="nav_projects">Projects</a>
+                <a href="#skills" data-i18n="nav_skills">Skills</a>
+                <a href="#contact" data-i18n="nav_contact">Contact</a>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="lang-toggle" id="lang-toggle">
+                    <i class="fas fa-language"></i>
+                    <span id="lang-text">EN</span>
+                </button>
+                <button class="mobile-toggle" id="mobile-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="mobile-menu" id="mobile-menu">
+            <div class="nav-links">
+                <a href="#home" data-i18n="nav_home">Home</a>
+                <a href="#projects" data-i18n="nav_projects">Projects</a>
+                <a href="#skills" data-i18n="nav_skills">Skills</a>
+                <a href="#contact" data-i18n="nav_contact">Contact</a>
+            </div>
+            <button class="lang-toggle" id="mobile-lang-toggle">
+                <i class="fas fa-language"></i>
+                <span id="mobile-lang-text">EN</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 data-i18n="hero_title">Crafting Immersive Game Experiences</h1>
+            <p data-i18n="hero_subtitle">Full-stack game developer specializing in programming, sound design, and 2D art for unforgettable player experiences.</p>
+            <div class="btn-group">
+                <a href="#projects" class="btn btn-primary" data-i18n="hero_btn1">View Projects <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
+                <a href="#contact" class="btn btn-secondary" data-i18n="hero_btn2">Let's Collaborate</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down" style="font-size: 1.5rem; color: #64748b;"></i>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+        <div class="section-header">
+            <h2 data-i18n="skills_title">Creative & Technical Mastery</h2>
+            <p data-i18n="skills_subtitle">Blending technical expertise with artistic vision to create cohesive and engaging game experiences across multiple disciplines.</p>
+        </div>
+        
+        <div class="skills-container">
+            <div class="skill-card skill-programming fade-in">
+                <div class="skill-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3 data-i18n="skill1_title">Game Programming</h3>
+                <p data-i18n="skill1_desc">C#, C++, Python, Unity, Unreal Engine, Godot, PyGame, AI behavior trees, physics systems, and networked multiplayer implementations.</p>
+                <div class="skill-tags">
+                    <span class="skill-tag" data-i18n="skill1_tag1">C#</span>
+                    <span class="skill-tag" data-i18n="skill1_tag2">Unity</span>
+                    <span class="skill-tag" data-i18n="skill1_tag3">Unreal</span>
+                    <span class="skill-tag" data-i18n="skill1_tag4">C++</span>
+                    <span class="skill-tag" data-i18n="skill1_tag5">Python</span>
+                </div>
+            </div>
+            
+            <div class="skill-card skill-sound fade-in">
+                <div class="skill-icon">
+                    <i class="fas fa-music"></i>
+                </div>
+                <h3 data-i18n="skill2_title">Sound Design</h3>
+                <p data-i18n="skill2_desc">Original compositions, SFX creation, adaptive audio systems, Foley artistry, and spatial audio implementation for immersive game environments.</p>
+                <div class="skill-tags">
+                    <span class="skill-tag" data-i18n="skill2_tag1">FMOD</span>
+                    <span class="skill-tag" data-i18n="skill2_tag2">Wwise</span>
+                    <span class="skill-tag" data-i18n="skill2_tag3">Ableton</span>
+                    <span class="skill-tag" data-i18n="skill2_tag4">SFX</span>
+                    <span class="skill-tag" data-i18n="skill2_tag5">Composition</span>
+                </div>
+            </div>
+            
+            <div class="skill-card skill-art fade-in">
+                <div class="skill-icon">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <h3 data-i18n="skill3_title">2D Art & Animation</h3>
+                <p data-i18n="skill3_desc">Pixel art, character design, environment art, sprite animation, UI/UX design, and visual effects for indie and AAA game projects.</p>
+                <div class="skill-tags">
+                    <span class="skill-tag" data-i18n="skill3_tag1">Photoshop</span>
+                    <span class="skill-tag" data-i18n="skill3_tag2">Aseprite</span>
+                    <span class="skill-tag" data-i18n="skill3_tag3">Spine</span>
+                    <span class="skill-tag" data-i18n="skill3_tag4">UI/UX</span>
+                    <span class="skill-tag" data-i18n="skill3_tag5">Pixel Art</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section projects-section" id="projects">
+        <div class="section-header">
+            <h2 data-i18n="projects_title">Featured Projects</h2>
+            <p data-i18n="projects_subtitle">A selection of games and experiences where I handled multiple development roles to create cohesive, polished results.</p>
+        </div>
+        
+        <div class="projects-grid">
+            <div class="project-card fade-in">
+                <div class="project-image">
+                    <img src="https://placehold.co/600x400/1e293b/64748b?text=Neon+Nexus" alt="Neon Nexus">
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3 class="project-title">Neon Nexus</h3>
+                        <i class="fas fa-folder-open" style="color: #64748b; font-size: 1.25rem;"></i>
+                    </div>
+                    <div class="project-role" data-i18n="project1_role">Lead Programmer & Sound Designer</div>
+                    <p class="project-description" data-i18n="project1_desc">Cyberpunk runner with dynamic soundtrack that changes based on player actions. Implemented procedural level generation and adaptive audio system.</p>
+                    <div class="project-tags">
+                        <span class="project-tag" data-i18n="project1_tag1">Unity</span>
+                        <span class="project-tag" data-i18n="project1_tag2">C#</span>
+                        <span class="project-tag" data-i18n="project1_tag3">FMOD</span>
+                        <span class="project-tag" data-i18n="project1_tag4">Pixel Art</span>
+                    </div>
+                    <a href="#" class="project-link" data-i18n="project_link">View Case Study <i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="project-card fade-in">
+                <div class="project-image">
+                    <img src="https://placehold.co/600x400/0f172a/94a3b8?text=Whisperwood" alt="Whisperwood">
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3 class="project-title">Whisperwood</h3>
+                        <i class="fas fa-folder-open" style="color: #64748b; font-size: 1.25rem;"></i>
+                    </div>
+                    <div class="project-role" data-i18n="project2_role">2D Artist & Programmer</div>
+                    <p class="project-description" data-i18n="project2_desc">Atmospheric puzzle adventure featuring hand-drawn environments and original piano score. Created all visual assets and core gameplay mechanics.</p>
+                    <div class="project-tags">
+                        <span class="project-tag" data-i18n="project2_tag1">Godot</span>
+                        <span class="project-tag" data-i18n="project2_tag2">GDScript</span>
+                        <span class="project-tag" data-i18n="project2_tag3">Hand-drawn Art</span>
+                        <span class="project-tag" data-i18n="project2_tag4">Spatial Audio</span>
+                    </div>
+                    <a href="#" class="project-link" data-i18n="project_link">View Case Study <i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="project-card fade-in">
+                <div class="project-image">
+                    <img src="https://placehold.co/600x400/0c0a09/f5f5f4?text=Quantum+Drift" alt="Quantum Drift">
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <h3 class="project-title">Quantum Drift</h3>
+                        <i class="fas fa-folder-open" style="color: #64748b; font-size: 1.25rem;"></i>
+                    </div>
+                    <div class="project-role" data-i18n="project3_role">Full Development</div>
+                    <p class="project-description" data-i18n="project3_desc">Retro-inspired racing game with synthwave soundtrack and particle effects. Developed complete game loop, physics system, and audio-visual synchronization.</p>
+                    <div class="project-tags">
+                        <span class="project-tag" data-i18n="project3_tag1">Unreal Engine</span>
+                        <span class="project-tag" data-i18n="project3_tag2">C++</span>
+                        <span class="project-tag" data-i18n="project3_tag3">Synthwave</span>
+                        <span class="project-tag" data-i18n="project3_tag4">VFX</span>
+                    </div>
+                    <a href="#" class="project-link" data-i18n="project_link">View Case Study <i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="view-all">
+            <a href="#" class="btn btn-primary" data-i18n="view_all">View All Projects <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="contact-container">
+            <div class="contact-info fade-in">
+                <h2 data-i18n="contact_title">Let's Create Together</h2>
+                <p data-i18n="contact_subtitle">I'm currently available for freelance projects, collaborations, and full-time opportunities. Whether you need a complete game developed or specific expertise in programming, sound design, or 2D art, I'd love to hear about your vision.</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">hello@pixelpulse.dev</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div class="contact-text">github.com/pixelpulse</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div class="contact-text">linkedin.com/in/pixelpulse</div>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <div class="contact-form fade-in">
+                <h3 style="font-size: 1.75rem; margin-bottom: 1.5rem; color: var(--text-primary);"><span data-i18n="form_title">Send a Message</span></h3>
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;" data-i18n="form_subtitle">I respond to all inquiries within 24 hours</p>
+                
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="name" data-i18n="form_name">Name</label>
+                        <input type="text" id="name" class="form-control" placeholder="Your name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" data-i18n="form_email">Email</label>
+                        <input type="email" id="email" class="form-control" placeholder="your@email.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" data-i18n="form_message">Message</label>
+                        <textarea id="message" class="form-control" placeholder="Tell me about your project..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%;" data-i18n="form_button">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-gamepad"></i>
+            </div>
+            <p class="copyright" id="copyright-text">© <span id="year"></span> PixelPulse Studios. All rights reserved.</p>
+            <p class="footer-description" data-i18n="footer_desc">Crafting immersive game experiences through code, sound, and art. Specializing in indie game development with a multidisciplinary approach.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Language translations
+        const translations = {
+            en: {
+                site_title: "PixelPulse Studios",
+                nav_home: "Home",
+                nav_projects: "Projects",
+                nav_skills: "Skills",
+                nav_contact: "Contact",
+                hero_title: "Crafting Immersive Game Experiences",
+                hero_subtitle: "Full-stack game developer specializing in programming, sound design, and 2D art for unforgettable player experiences.",
+                hero_btn1: "View Projects",
+                hero_btn2: "Let's Collaborate",
+                skills_title: "Creative & Technical Mastery",
+                skills_subtitle: "Blending technical expertise with artistic vision to create cohesive and engaging game experiences across multiple disciplines.",
+                skill1_title: "Game Programming",
+                skill1_desc: "C#, C++, Python, Unity, Unreal Engine, Godot, PyGame, AI behavior trees, physics systems, and networked multiplayer implementations.",
+                skill1_tag1: "C#",
+                skill1_tag2: "Unity",
+                skill1_tag3: "Unreal",
+                skill1_tag4: "C++",
+                skill1_tag5: "Python",
+                skill2_title: "Sound Design",
+                skill2_desc: "Original compositions, SFX creation, adaptive audio systems, Foley artistry, and spatial audio implementation for immersive game environments.",
+                skill2_tag1: "FMOD",
+                skill2_tag2: "Wwise",
+                skill2_tag3: "Ableton",
+                skill2_tag4: "SFX",
+                skill2_tag5: "Composition",
+                skill3_title: "2D Art & Animation",
+                skill3_desc: "Pixel art, character design, environment art, sprite animation, UI/UX design, and visual effects for indie and AAA game projects.",
+                skill3_tag1: "Photoshop",
+                skill3_tag2: "Aseprite",
+                skill3_tag3: "Spine",
+                skill3_tag4: "UI/UX",
+                skill3_tag5: "Pixel Art",
+                projects_title: "Featured Projects",
+                projects_subtitle: "A selection of games and experiences where I handled multiple development roles to create cohesive, polished results.",
+                project1_role: "Lead Programmer & Sound Designer",
+                project1_desc: "Cyberpunk runner with dynamic soundtrack that changes based on player actions. Implemented procedural level generation and adaptive audio system.",
+                project1_tag1: "Unity",
+                project1_tag2: "C#",
+                project1_tag3: "FMOD",
+                project1_tag4: "Pixel Art",
+                project2_role: "2D Artist & Programmer",
+                project2_desc: "Atmospheric puzzle adventure featuring hand-drawn environments and original piano score. Created all visual assets and core gameplay mechanics.",
+                project2_tag1: "Godot",
+                project2_tag2: "GDScript",
+                project2_tag3: "Hand-drawn Art",
+                project2_tag4: "Spatial Audio",
+                project3_role: "Full Development",
+                project3_desc: "Retro-inspired racing game with synthwave soundtrack and particle effects. Developed complete game loop, physics system, and audio-visual synchronization.",
+                project3_tag1: "Unreal Engine",
+                project3_tag2: "C++",
+                project3_tag3: "Synthwave",
+                project3_tag4: "VFX",
+                project_link: "View Case Study",
+                view_all: "View All Projects",
+                contact_title: "Let's Create Together",
+                contact_subtitle: "I'm currently available for freelance projects, collaborations, and full-time opportunities. Whether you need a complete game developed or specific expertise in programming, sound design, or 2D art, I'd love to hear about your vision.",
+                form_title: "Send a Message",
+                form_subtitle: "I respond to all inquiries within 24 hours",
+                form_name: "Name",
+                form_email: "Email",
+                form_message: "Message",
+                form_placeholder: "Tell me about your project...",
+                form_button: "Send Message",
+                footer_desc: "Crafting immersive game experiences through code, sound, and art. Specializing in indie game development with a multidisciplinary approach."
+            },
+            ru: {
+                site_title: "PixelPulse Studios",
+                nav_home: "Главная",
+                nav_projects: "Проекты",
+                nav_skills: "Навыки",
+                nav_contact: "Контакты",
+                hero_title: "Создание захватывающих игровых впечатлений",
+                hero_subtitle: "Full-stack разработчик игр, специализирующийся на программировании, звуковом дизайне и 2D-арте для незабываемых игровых впечатлений.",
+                hero_btn1: "Посмотреть проекты",
+                hero_btn2: "Сотрудничество",
+                skills_title: "Творческое и техническое мастерство",
+                skills_subtitle: "Сочетание технических навыков и художественного видения для создания целостных и захватывающих игровых впечатлений в различных дисциплинах.",
+                skill1_title: "Разработка игр",
+                skill1_desc: "C#, C++, Python, Unity, Unreal Engine, Godot, PyGame, деревья поведения ИИ, физические системы и реализация сетевого мультиплеера.",
+                skill1_tag1: "C#",
+                skill1_tag2: "Unity",
+                skill1_tag3: "Unreal",
+                skill1_tag4: "C++",
+                skill1_tag5: "Python",
+                skill2_title: "Звуковой дизайн",
+                skill2_desc: "Оригинальные композиции, создание звуковых эффектов, адаптивные аудиосистемы, фоли-арт и пространственное звучание для погружающих игровых сред.",
+                skill2_tag1: "FMOD",
+                skill2_tag2: "Wwise",
+                skill2_tag3: "Ableton",
+                skill2_tag4: "SFX",
+                skill2_tag5: "Композиция",
+                skill3_title: "2D графика и анимация",
+                skill3_desc: "Пиксельная графика, дизайн персонажей, окружение, спрайт-анимация, UI/UX дизайн и визуальные эффекты для инди и AAA игровых проектов.",
+                skill3_tag1: "Photoshop",
+                skill3_tag2: "Aseprite",
+                skill3_tag3: "Spine",
+                skill3_tag4: "UI/UX",
+                skill3_tag5: "Пиксель-арт",
+                projects_title: "Избранные проекты",
+                projects_subtitle: "Подборка игр и опытов, в которых я выполнял несколько ролей разработчика для создания целостных и качественных результатов.",
+                project1_role: "Ведущий программист и звуковой дизайнер",
+                project1_desc: "Киберпанк-раннер с динамическим саундтреком, который меняется в зависимости от действий игрока. Реализована процедурная генерация уровней и адаптивная аудиосистема.",
+                project1_tag1: "Unity",
+                project1_tag2: "C#",
+                project1_tag3: "FMOD",
+                project1_tag4: "Пиксель-арт",
+                project2_role: "2D художник и программист",
+                project2_desc: "Атмосферное приключение-головоломка с нарисованными вручную окружениями и оригинальной фортепианной музыкой. Созданы все визуальные ассеты и основной геймплей.",
+                project2_tag1: "Godot",
+                project2_tag2: "GDScript",
+                project2_tag3: "Ручная графика",
+                project2_tag4: "Пространственное аудио",
+                project3_role: "Полная разработка",
+                project3_desc: "Гоночная игра в ретро-стиле с саундтреком в стиле синтвейв и эффектами частиц. Разработан полный игровой цикл, физическая система и синхронизация аудио и визуальных эффектов.",
+                project3_tag1: "Unreal Engine",
+                project3_tag2: "C++",
+                project3_tag3: "Синтвейв",
+                project3_tag4: "VFX",
+                project_link: "Посмотреть кейс",
+                view_all: "Все проекты",
+                contact_title: "Давайте создадим вместе",
+                contact_subtitle: "В данный момент я доступен для фриланс-проектов, коллабораций и полной занятости. Независимо от того, нужна ли вам полная разработка игры или конкретные навыки в программировании, звуковом дизайне или 2D-арте, я бы хотел услышать о вашем видении.",
+                form_title: "Отправить сообщение",
+                form_subtitle: "Я отвечаю на все запросы в течение 24 часов",
+                form_name: "Имя",
+                form_email: "Электронная почта",
+                form_message: "Сообщение",
+                form_placeholder: "Расскажите о вашем проекте...",
+                form_button: "Отправить",
+                footer_desc: "Создание захватывающих игровых впечатлений через код, звук и искусство. Специализация на разработке инди-игр с мультидисциплинарным подходом."
+            }
+        };
+
+        // Mobile Menu Toggle
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            const icon = mobileToggle.querySelector('i');
+            if (mobileMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.mobile-menu .nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                const icon = mobileToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !mobileToggle.contains(e.target) && mobileMenu.classList.contains('active')) {
+                mobileMenu.classList.remove('active');
+                const icon = mobileToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Navigation active state
+        const navLinks = document.querySelectorAll('.nav-links a');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Scroll animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('appear');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        fadeElements.forEach(element => {
+            observer.observe(element);
+        });
+        
+        // Form submission
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const currentLang = document.documentElement.lang;
+            const alertMessages = {
+                en: `Thank you, ${name}! Your message has been received. I'll get back to you within 24 hours.`,
+                ru: `Спасибо, ${name}! Ваше сообщение получено. Я отвечу вам в течение 24 часов.`
+            };
+            alert(alertMessages[currentLang]);
+            e.target.reset();
+        });
+        
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (mobileMenu.classList.contains('active')) {
+                        mobileMenu.classList.remove('active');
+                        const icon = mobileToggle.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                }
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(15, 23, 42, 0.95)';
+                nav.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.2)';
+            } else {
+                nav.style.background = 'rgba(15, 23, 42, 0.85)';
+                nav.style.boxShadow = 'none';
+            }
+        });
+
+        // Language switching functionality
+        let currentLang = 'en';
+        const langToggle = document.getElementById('lang-toggle');
+        const mobileLangToggle = document.getElementById('mobile-lang-toggle');
+        const langText = document.getElementById('lang-text');
+        const mobileLangText = document.getElementById('mobile-lang-text');
+        const copyrightText = document.getElementById('copyright-text');
+
+        // Initialize language from localStorage if available
+        if (localStorage.getItem('language')) {
+            currentLang = localStorage.getItem('language');
+            langText.textContent = currentLang.toUpperCase();
+            mobileLangText.textContent = currentLang.toUpperCase();
+            document.documentElement.lang = currentLang;
+            updateContent();
+        } else {
+            // Set default language based on browser language
+            const browserLang = navigator.language.substring(0, 2);
+            if (browserLang === 'ru') {
+                currentLang = 'ru';
+                langText.textContent = 'RU';
+                mobileLangText.textContent = 'RU';
+                document.documentElement.lang = 'ru';
+                updateContent();
+            }
+        }
+
+        // Toggle language function
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ru' : 'en';
+            langText.textContent = currentLang.toUpperCase();
+            mobileLangText.textContent = currentLang.toUpperCase();
+            document.documentElement.lang = currentLang;
+            localStorage.setItem('language', currentLang);
+            updateContent();
+        }
+
+        // Update page content based on current language
+        function updateContent() {
+            // Update all elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    element.textContent = translations[currentLang][key];
+                }
+            });
+
+            // Update placeholder text for message textarea
+            const messageInput = document.getElementById('message');
+            if (messageInput) {
+                messageInput.placeholder = translations[currentLang].form_placeholder;
+            }
+
+            // Update copyright text
+            const year = new Date().getFullYear();
+            copyrightText.innerHTML = currentLang === 'en' 
+                ? `© ${year} PixelPulse Studios. All rights reserved.`
+                : `© ${year} PixelPulse Studios. Все права защищены.`;
+        }
+
+        // Attach event listeners to language toggle buttons
+        langToggle.addEventListener('click', toggleLanguage);
+        mobileLangToggle.addEventListener('click', toggleLanguage);
+    </script>
+</body>
+</html>
