@@ -25,6 +25,20 @@ const translations = {
         code: "// Code",
         sound: "b Sound",
         visuals: "‡ Visuals",
+        main_heading: "", 
+        main_subheading: "",
+        viewp_button: "View Projects", 
+        hire_button: "Hire me",
+        my_skills: "My Toolkit", 
+        card_programming: "Programming", 
+        card_sound: "Sound Design",
+        card_art: "2D Art & Animation",
+        card_fill_programming: "4 years worth of coding expierence, high skill versatility, perfectionist approach",
+        card_fill_sound: "4 years of music composition and sound design combined, from raw and experimental sound to pop",
+        card_fill_art: "A hobby grown into side projects with pieces of my soul",
+        featured_projects: "",
+        
+
     },
     ru: {
         about: "§ Обо мне",
