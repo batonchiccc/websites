@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Vostrikov Platon">
+    <meta name="description" content="Main page of my portfolio">
+
+    <link rel="icon" href="favicon_portfolio.ico" sizes="any">
+    <title>Audio Portfoolio</title>
+    <link rel="stylesheet" href="csscollection.css">
+
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <span class="logo-icon">🎮</span>
+                    Portfoolio
+                </div>
+                <div style="display: flex;">
+                <button id="lang-toggle" class="lang-toggle" data-i18n="lang_toggle"><b>RU</b></button>
+                <button class="hamburger">☰</button>
+                <ul class="nav-links">
+                    <li class="navbar-item"><a href="" data-i18n="about">§ Обо мне</a></li>
+                    <li class="navbar-item"><a href="" data-i18n="projects"># Проекты</a></li>
+                    <li class="navbar-item"><a href="" data-i18n="code">// Код</a></li>
+                    <li class="navbar-item"><a href="music_showcase.html" data-i18n="sound">b Саунд</a></li>
+                    <li class="navbar-item"><a href="" data-i18n="visuals">‡ Графика</a></li>
+                </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container" style="margin-top: 20vh; margin-bottom: 10vh;">
+        <div class="audio-grid">
+            <div class="audio-card">
+                <div class="audio-card-header">
+                    <h2 class="audio-card-title">Ocean Waves</h2>
+                    <p class="audio-card-description">Soothing sounds of gentle waves crashing on a peaceful beach at sunset. Perfect for relaxation and meditation.</p>
+                </div>
+                <div class="audio-player">
+                    <audio controls>
+                        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+            </div>
+
+            <div class="audio-card">
+                <div class="audio-card-header">
+                    <h2 class="audio-card-title">Forest Ambience</h2>
+                    <p class="audio-card-description">Immersive forest sounds with birdsong, rustling leaves, and a gentle stream. Creates a calming natural atmosphere.</p>
+                </div>
+                <div class="audio-player">
+                    <audio controls>
+                        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+            </div>
+
+            <div class="audio-card">
+                <div class="audio-card-header">
+                    <h2 class="audio-card-title">Rain on Window</h2>
+                    <p class="audio-card-description">Comforting sound of steady rain falling on a windowpane. Ideal for focusing, sleeping, or creating a cozy mood.</p>
+                </div>
+                <div class="audio-player">
+                    <audio controls>
+                        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://t.me/Batonchiccc" class="social-icon">tg</a>
+                <a href="mailto:wosplaton@gmail.com" class="social-icon">@</a>
+                <a href="https://github.com/batonchiccc" class="social-icon">git</a>
+            </div>
+            <p class="copyright">© 2025 Vostrikov Platon</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Pause other audio players when one starts playing
+            const audioPlayers = document.querySelectorAll('audio');
+            
+            audioPlayers.forEach(player => {
+                player.addEventListener('play', () => {
+                    audioPlayers.forEach(otherPlayer => {
+                        if (otherPlayer !== player) {
+                            otherPlayer.pause();
+                        }
+                    });
+                });
+            });
+
+            // Add subtle animation to play buttons on hover
+            document.querySelectorAll('audio').forEach(audio => {
+                audio.addEventListener('mouseover', () => {
+                    audio.style.transform = 'scale(1.02)';
+                });
+                
+                audio.addEventListener('mouseout', () => {
+                    audio.style.transform = 'scale(1)';
+                });
+            });
+
+            // Add keyboard accessibility
+            document.querySelectorAll('.audio-card').forEach(card => {
+                card.setAttribute('tabindex', '0');
+                card.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        const audio = card.querySelector('audio');
+                        if (audio.paused) {
+                            audio.play();
+                        } else {
+                            audio.pause();
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
