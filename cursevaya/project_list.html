@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Vostrikov Platon">
+    <meta name="description" content="My project list">
+
+    <link rel="icon" href="favicon_portfolio.ico" sizes="any">
+    <title>Audio Portfoolio</title>
+    <link rel="stylesheet" href="csscollection.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <a href="overview.html"class="logo-icon">🎮Portfoolio</a>
+                </div>
+                <div style="display: flex;">
+                <button id="lang-toggle" class="lang-toggle" data-i18n="lang_toggle"><b>RU</b></button>
+                <button class="hamburger">☰</button>
+                <ul class="nav-links">
+                    <li class="navbar-item"><a href="" data-i18n="about">§ Обо мне</a></li>
+                    <li class="navbar-item"><a href="project_list.html" data-i18n="projects"># Проекты</a></li>
+                    <li class="navbar-item"><a href="" data-i18n="code">// Код</a></li>
+                    <li class="navbar-item"><a href="music_showcase.html" data-i18n="sound">b Саунд</a></li>
+                    <li class="navbar-item"><a href="" data-i18n="visuals">‡ Графика</a></li>
+                </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container"style="margin-top: 20vh; margin-bottom: 10vh;">
+        <div class="filter-container" id="filter-container">
+            <!-- Filter buttons will be generated here -->
+        </div>
+
+        <div class="project-list" id="project-list">
+            <!-- Projects will be generated here -->
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://t.me/Batonchiccc" class="social-icon">tg</a>
+                <a href="mailto:wosplaton@gmail.com" class="social-icon">@</a>
+                <a href="https://github.com/batonchiccc" class="social-icon">git</a>
+            </div>
+            <p class="copyright">© 2025 Vostrikov Platon</p>
+        </div>
+    </footer>
+
+    <script>
+        // Project data
+        const projects = [
+            {
+                id: 1,
+                title: "Starlight Odyssey",
+                description: "An epic space exploration RPG with procedurally generated galaxies and real-time physics.",
+                image: "https://placehold.co/220x180/6133b5/ffffff?text=Starlight+Odyssey&font=montserrat",
+                tags: ["Unity", "C#", "RPG", "Space"]
+            },
+            {
+                id: 2,
+                title: "Neon Drift",
+                description: "High-octane futuristic racing game with customizable vehicles and dynamic weather systems.",
+                image: "https://placehold.co/220x180/e24dce/ffffff?text=Neon+Drift&font=montserrat",
+                tags: ["Unreal", "C++", "Racing", "Multiplayer"]
+            },
+            {
+                id: 3,
+                title: "Pixel Dungeon",
+                description: "Roguelike dungeon crawler with pixel art aesthetics and permadeath mechanics.",
+                image: "https://placehold.co/220x180/1e1e2e/ffffff?text=Pixel+Dungeon&font=montserrat",
+                tags: ["Godot", "GDScript", "Roguelike", "2D"]
+            },
+            {
+                id: 4,
+                title: "Cyber Heist",
+                description: "Tactical stealth game set in a dystopian future where you hack systems and avoid security.",
+                image: "https://placehold.co/220x180/0f0f1b/ffffff?text=Cyber+Heist&font=montserrat",
+                tags: ["Unity", "C#", "Stealth", "VR"]
+            },
+            {
+                id: 5,
+                title: "Mythic Realms",
+                description: "Open-world fantasy MMORPG with player-driven economy and dynamic world events.",
+                image: "https://placehold.co/220x180/c593ff/ffffff?text=Mythic+Realms&font=montserrat",
+                tags: ["Unreal", "C++", "MMORPG", "Open World"]
+            }
+        ];
+
+        // Get unique tags from projects
+        const allTags = new Set();
+        projects.forEach(project => {
+            project.tags.forEach(tag => allTags.add(tag));
+        });
+        const uniqueTags = ['All', ...allTags];
+
+        // DOM elements
+        const filterContainer = document.getElementById('filter-container');
+        const projectList = document.getElementById('project-list');
+        let activeFilter = 'All';
+
+        // Render filter buttons
+        function renderFilterButtons() {
+            filterContainer.innerHTML = uniqueTags.map(tag => {
+                const isActive = tag === activeFilter ? 'active' : '';
+                const isAll = tag === 'All' ? 'all' : '';
+                return `<button class="filter-btn ${isAll} ${isActive}" data-tag="${tag}">${tag}</button>`;
+            }).join('');
+
+            // Add event listeners to filter buttons
+            document.querySelectorAll('.filter-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    activeFilter = button.getAttribute('data-tag');
+                    renderFilterButtons();
+                    renderProjects();
+                });
+            });
+        }
+
+        // Render projects
+        function renderProjects() {
+            let filteredProjects = projects;
+            
+            if (activeFilter !== 'All') {
+                filteredProjects = projects.filter(project => 
+                    project.tags.includes(activeFilter)
+                );
+            }
+
+            projectList.innerHTML = filteredProjects.map(project => `
+                <div class="project-item">
+                    <div class="project-image">
+                        <img src="${project.image}" alt="${project.title}">
+                    </div>
+                    <div class="project-content">
+                        <div>
+                            <h3 class="project-title">${project.title}</h3>
+                            <p class="project-description">${project.description}</p>
+                        </div>
+                        <div class="project-tags">
+                            ${project.tags.map(tag => `
+                                <span class="tag" data-tag="${tag}">${tag}</span>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            // Add event listeners to project tags
+            document.querySelectorAll('.project-tags .tag').forEach(tagElement => {
+                tagElement.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    activeFilter = tagElement.getAttribute('data-tag');
+                    renderFilterButtons();
+                    renderProjects();
+                });
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderFilterButtons();
+            renderProjects();
+        });
+    </script>
+</body>
+</html>
