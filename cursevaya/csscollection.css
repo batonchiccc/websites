@@ -8,6 +8,13 @@
     --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     --shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
     --radius: 8px;
+    --unity: #9533b5;
+    --csharp: #e24dce;
+    --unreal: #3b82f6;
+    --cpp: #0ea5e9;
+    --java: #f97316;
+    --godot: #188941;
+    --gdscript: #22c545;
 }
 
 * {
@@ -28,7 +35,7 @@ body {
 }
 
 .container {
-    width: 70%;
+    width: 80%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
@@ -227,7 +234,6 @@ nav {
 }
 
 .section-title h2 {
-    font-family: 'Poppins', sans-serif;
     font-size: 44px;
     margin-bottom: 16px;
     background: linear-gradient(90deg, var(--light), #a0a0c0);
@@ -238,7 +244,7 @@ nav {
 
 .section-title p {
     color: #a0a0c0;
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
 }
 
@@ -400,7 +406,6 @@ input, textarea {
     border: 1px solid rgba(106, 90, 249, 0.3);
     border-radius: 12px;
     color: var(--light);
-    font-family: 'Space Grotesk', monospace;
     font-size: 16px;
     transition: var(--transition);
 }
@@ -487,7 +492,7 @@ footer {
     }
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1000px) {
     .hamburger {
         display: block;
     }
@@ -765,7 +770,7 @@ audio::-webkit-media-controls-time-remaining-display {
 }
 
 .project-title {
-    font-size: 1.8rem;
+    font-size: 28px;
     margin-bottom: 10px;
     color: var(--success);
     transition: var(--transition);
@@ -775,17 +780,17 @@ audio::-webkit-media-controls-time-remaining-display {
     color: var(--light);
     opacity: 0.9;
     margin-bottom: 15px;
-    font-size: 1.05rem;
+    font-size: 16px;
     line-height: 1.5;
 }
 
 .project-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
 }
 
-.tag {
+.tag-project {
     background: var(--primary);
     color: white;
     padding: 4px 12px;
@@ -793,11 +798,6 @@ audio::-webkit-media-controls-time-remaining-display {
     font-size: 0.9rem;
     cursor: pointer;
     transition: var(--transition);
-}
-
-.tag:hover {
-    background: var(--accent);
-    transform: scale(1.05);
 }
 
 @media (max-width: 900px) {
@@ -832,4 +832,105 @@ audio::-webkit-media-controls-time-remaining-display {
     .project-content {
         padding: 20px 15px;
     }
+}
+
+.snippets-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.snippet-card {
+    background: rgba(30, 30, 46, 0.7);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border: 1px solid rgba(106, 90, 249, 0.2);
+}
+
+.card-header {
+    padding: 16px;
+    border-bottom: 1px solid rgba(106, 90, 249, 0.3);
+}
+
+.snippet-title {
+    font-size: 24px;
+    margin-bottom: 8px;
+    color: var(--light);
+}
+
+.snippet-description {
+    color: var(--success);
+    margin-bottom: 16px;
+    font-style: italic;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+    
+.tag.unity { background: var(--unity); color: white; }
+.tag.csharp { background: var(--csharp); color: white; }
+.tag.unreal { background: var(--unreal); color: white; }
+.tag.cpp { background: var(--cpp); color: white; }
+.tag.java { background: var(--java); color: white; }
+.tag.godot { background: var(--godot); color: white; }
+.tag.gdscript{ background: var(--gdscript); color: white; }
+
+.code-container {
+    padding: 20px;
+    background: rgba(15, 15, 27, 0.6);
+    overflow-x: auto;
+}
+
+pre {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+code {
+    font-family: Consolas, monospace;
+}
+
+.language-label {
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    background: rgba(106, 90, 249, 0.2);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .snippets-container {
+        grid-template-columns: 1fr;
+    }
+    
+    body {
+        padding-top: 70px;
+    }
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
 }

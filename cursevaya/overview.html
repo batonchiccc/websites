@@ -16,18 +16,18 @@
         <div class="container">
             <nav>
                 <div class="logo">
-                    <a href="overview.html"class="logo-icon">🎮Portfoolio</a>
+                    <a href="overview.html" class="logo-icon">🎮Portfoolio</a>
                 </div>
-                <div style="display: flex;">
-                <button id="lang-toggle" class="lang-toggle" data-i18n="lang_toggle"><b>RU</b></button>
-                <button class="hamburger">☰</button>
-                <ul class="nav-links">
-                    <li class="navbar-item"><a href="" data-i18n="about">§ Обо мне</a></li>
-                    <li class="navbar-item"><a href="project_list.html" data-i18n="projects"># Проекты</a></li>
-                    <li class="navbar-item"><a href="" data-i18n="code">// Код</a></li>
-                    <li class="navbar-item"><a href="music_showcase.html" data-i18n="sound">b Саунд</a></li>
-                    <li class="navbar-item"><a href="" data-i18n="visuals">‡ Графика</a></li>
-                </ul>
+                <div style="display: flex; align-items: center;">
+                    <button id="lang-toggle" class="lang-toggle" data-i18n="lang_toggle"><b>RU</b></button>
+                    <button class="hamburger">☰</button>
+                    <ul class="nav-links">
+                        <li class="navbar-item"><a href="" data-i18n="about">§ Обо мне</a></li>
+                        <li class="navbar-item"><a href="project_list.html" data-i18n="projects"># Проекты</a></li>
+                        <li class="navbar-item"><a href="code_showcase.html" data-i18n="code">// Код</a></li>
+                        <li class="navbar-item"><a href="music_showcase.html" data-i18n="sound">b Саунд</a></li>
+                        <li class="navbar-item"><a href="" data-i18n="visuals">‡ Графика</a></li>
+                    </ul>
                 </div>
             </nav>
         </div>
@@ -36,11 +36,11 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Crafting Immersive Gaming Experiences</h1>
-                <p>Full-stack game developer specializing in programming, sound design, and 2D art. Creating engaging player experiences from concept to launch.</p>
+                <h1 data-i18n="hero_title">Создание захватывающих игровых впечатлений</h1>
+                <p data-i18n="hero_desc">Full-stack разработчик игр, специализирующийся на программировании, звуковом дизайне и 2D-арт. Создание увлекательных игровых впечатлений от концепции до запуска.</p>
                 <div class="cta-buttons">
-                    <a href="#portfolio" class="btn btn-primary" data-i18n="viewp_button">View Projects</a>
-                    <a href="#contact" class="btn btn-outline" data-i18n="hire_button">Hire Me</a>
+                    <a href="#portfolio" class="btn btn-primary" data-i18n="viewp_button">Посмотреть проекты</a>
+                    <a href="#contact" class="btn btn-outline" data-i18n="hire_button">Нанять меня</a>
                 </div>
             </div>
         </div>
@@ -49,13 +49,13 @@
     <section id="skills" class="skills">
         <div class="container">
             <div class="section-title">
-                <h2>My Creative Toolkit</h2>
+                <h2 data-i18n="skills_title">Мой творческий набор инструментов</h2>
             </div>
             <div class="skills-container">
                 <div class="skill-card">
                     <div class="skill-icon" style="font-weight: 1000;">//</div>
-                    <h3>Programming</h3>
-                    <p>Building robust game systems with clean architecture and optimized performance</p>
+                    <h3 data-i18n="prog_title">Программирование</h3>
+                    <p data-i18n="prog_desc">Создание надежных игровых систем с чистой архитектурой и оптимизированной производительностью</p>
                     <div class="skill-tags">
                         <span class="tag">C#</span>
                         <span class="tag">Unity</span>
@@ -68,12 +68,11 @@
                 
                 <div class="skill-card">
                     <div class="skill-icon">🖌️</div>
-                    <h3>2D Art & Animation</h3>
-                    <p>Creating vibrant characters, environments, and animations that bring games to life</p>
+                    <h3 data-i18n="art_title">2D Арт и Анимация</h3>
+                    <p data-i18n="art_desc">Создание ярких персонажей, окружения и анимаций, которые оживают в играх</p>
                     <div class="skill-tags">
-                        <span class="tag">Character Design</span>
-                        <span class="tag">Environment Art</span>
-                        <span class="tag">Pixel Art</span>
+                        <span class="tag">Character design</span>
+                        <span class="tag">Pixel-art</span>
                         <span class="tag">Spine</span>
                         <span class="tag">Photoshop</span>
                     </div>
@@ -81,14 +80,14 @@
                 
                 <div class="skill-card">
                     <div class="skill-icon">🎵</div>
-                    <h3>Sound Design</h3>
-                    <p>Crafting immersive audio landscapes with dynamic music and impactful sound effects</p>
+                    <h3 data-i18n="sound_title">Звуковой Дизайн</h3>
+                    <p data-i18n="sound_desc">Создание захватывающих аудио-ландшафтов с динамической музыкой и выразительными звуковыми эффектами</p>
                     <div class="skill-tags">
                         <span class="tag">Ableton</span>
                         <span class="tag">Electric</span>
                         <span class="tag">FMOD</span>
-                        <span class="tag">Audio Implementation</span>
-                        <span class="tag">Music Composition</span>
+                        <span class="tag">Audio integration</span>
+                        <span class="tag">Track composition</span>
                     </div>
                 </div>
             </div>
@@ -98,39 +97,39 @@
     <section id="portfolio" class="portfolio">
         <div class="container">
             <div class="section-title">
-                <h2>Featured Projects</h2>
-                <p>Selected works showcasing my diverse skill set across game development disciplines</p>
+                <h2 data-i18n="portfolio_title">Избранные проекты</h2>
+                <p data-i18n="portfolio_desc">Отобранные работы, демонстрирующие мой разнообразный набор навыков в разработке игр</p>
             </div>
             <div class="portfolio-grid">
                 <div class="project-card">
                     <img src="photos\photo_2025-11-27_18-17-43.jpg" alt="Chrono Quest" class="project-img">
                     <div class="project-overlay">
-                        <h3 class="project-title">Putrid Cupcake</h3>
-                        <span class="project-role">Tester & Sound Designer</span>
-                        <p class="project-desc">Fast paced FPS styled after Cluelty Squad</p>
+                        <h3 class="project-title" data-i18n="project1_title">Putrid Cupcake</h3>
+                        <span class="project-role" data-i18n="project1_role">Тестировщик и Звукорежиссер</span>
+                        <p class="project-desc" data-i18n="project1_desc">Динамичный шутер от первого лица в стиле Cluelty Squad</p>
                     </div>
                 </div>
                 
                 <div class="project-card">
                     <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3297790/header.jpg?t=1764945969" alt="IcoBeat" class="project-img">
                     <div class="project-overlay">
-                        <h3 class="project-title">ICOBEAT</h3>
-                        <span class="project-role">Sound designer & Composer</span>
-                        <p class="project-desc">A high-energy rhythm game that throws players into the dazzling lights of a neon-lit dance floor.</p>
+                        <h3 class="project-title" data-i18n="project2_title">ICOBEAT</h3>
+                        <span class="project-role" data-i18n="project2_role">Звукорежиссер и Композитор</span>
+                        <p class="project-desc" data-i18n="project2_desc">Энергичная ритм-игра, которая переносит игроков в ослепительные огни неоновой танцпола.</p>
                     </div>
                 </div>
                 
                 <div class="project-card">
                     <img src="photos\msedge_eXM7ID0xQ6.png" alt="Blin Switch" class="project-img">
                     <div class="project-overlay">
-                        <h3 class="project-title">Blin Switch</h3>
-                        <span class="project-role">UI & UX Developer & Programmer</span>
-                        <p class="project-desc">Little storytelling game made for MIREA gamejam.</p>
+                        <h3 class="project-title" data-i18n="project3_title">Blin Switch</h3>
+                        <span class="project-role" data-i18n="project3_role">UI/UX Разработчик и Программист</span>
+                        <p class="project-desc" data-i18n="project3_desc">Небольшая игра с историей, созданная для геймджема МИРЭА.</p>
                     </div>
                 </div>
             </div>
             <div class="view-all">
-                <a href="project_list.html" class="btn btn-primary" data-i18n="view_all">View All Projects <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
+                <a href="project_list.html" class="btn btn-primary" data-i18n="view_all">Посмотреть все проекты <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
             </div>
         </div>
     </section>
@@ -139,24 +138,24 @@
         <div class="container">
             <div class="contact-container">
                 <div class="section-title">
-                    <h2>Let's Create Something Amazing</h2>
-                    <p>Have a project in mind? I'd love to hear about your game development needs</p>
+                    <h2 data-i18n="contact_title">Давайте создадим что-то удивительное</h2>
+                    <p data-i18n="contact_desc" >Есть проект? Я был бы рад узнать о ваших потребностях в разработке игр</p>
                 </div>
                 <form class="contact-form">
                     <div class="form-group">
-                        <input type="text" placeholder="Your Name" required>
+                        <input type="text" data-i18n-placeholder="contact_name" placeholder="Ваше Имя" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" placeholder="Your Email" required>
+                        <input type="email" data-i18n-placeholder="contact_email" placeholder="Ваш Email" required>
                     </div>
                     <div class="form-group full-width">
-                        <input type="text" placeholder="Project Title" required>
+                        <input type="text" data-i18n-placeholder="contact_title" placeholder="Название проекта" required>
                     </div>
                     <div class="form-group full-width">
-                        <textarea placeholder="Tell me about your project..." required></textarea>
+                        <textarea data-i18n-placeholder="contact_desc_placeholder" placeholder="Расскажите мне о вашем проекте..." required></textarea>
                     </div>
                     <div class="form-group full-width">
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;" data-i18n="contact_submit">Отправить сообщение</button>
                     </div>
                 </form>
             </div>
@@ -170,10 +169,123 @@
                 <a href="mailto:wosplaton@gmail.com" class="social-icon">@</a>
                 <a href="https://github.com/batonchiccc" class="social-icon">git</a>
             </div>
-            <p class="copyright">© 2025 Vostrikov Platon</p>
+            <p class="copyright" data-i18n="copyright">© 2025 Vostrikov Platon</p>
         </div>
     </footer>
 
-    <script src="overview_script.js"></script>
+    <script>
+        
+document.querySelector('.contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Thank you for your message! I\'ll get back to you soon.');
+    this.reset();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const translations = {
+        en: {
+            lang_toggle: 'RU',
+            about: "§ About me",
+            projects: "# Projects",
+            code: "// Code",
+            sound: "b Sound",
+            visuals: "‡ Visuals",
+            viewp_button: 'View Projects',
+            hire_button: 'Hire Me',
+            hero_title: 'Crafting Immersive Gaming Experiences',
+            hero_desc: 'Full-stack game developer specializing in programming, sound design, and 2D art. Creating engaging player experiences from concept to launch.',
+            skills_title: 'My Creative Toolkit',
+            prog_title: 'Programming',
+            prog_desc: 'Building robust game systems with clean architecture and optimized performance',
+            art_title: '2D Art & Animation',
+            art_desc: 'Creating vibrant characters, environments, and animations that bring games to life',
+            sound_title: 'Sound Design',
+            sound_desc: 'Crafting immersive audio landscapes with dynamic music and impactful sound effects',
+            portfolio_title: 'Featured Projects',
+            portfolio_desc: 'Selected works showcasing my diverse skill set across game development disciplines',
+            project1_title: 'Putrid Cupcake',
+            project1_role: 'Tester & Sound Designer',
+            project1_desc: 'Fast paced FPS styled after Cluelty Squad',
+            project2_title: 'ICOBEAT',
+            project2_role: 'Sound designer & Composer',
+            project2_desc: 'A high-energy rhythm game that throws players into the dazzling lights of a neon-lit dance floor.',
+            project3_title: 'Blin Switch',
+            project3_role: 'UI & UX Developer & Programmer',
+            project3_desc: 'Little storytelling game made for MIREA gamejam.',
+            view_all: 'View All Projects',
+            contact_title: 'Let\'s Create Something Amazing',
+            contact_desc: 'Have a project in mind? I\'d love to hear about your game development needs',
+            contact_name: 'Your Name',
+            contact_email: 'Your Email',
+            contact_title: 'Project Title',
+            contact_desc_placeholder: 'Tell me about your project...',
+            contact_submit: 'Send Message',
+            copyright: '© 2025 Vostrikov Platon'
+        },
+        ru: {
+            lang_toggle: 'EN',
+            about: "§ Обо мне",
+            projects: "# Проекты",
+            code: "// Код",
+            sound: "b Саунд",
+            visuals: "‡ Графика",
+            viewp_button: 'Посмотреть проекты',
+            hire_button: 'Нанять меня',
+            hero_title: 'Создание захватывающих игровых впечатлений',
+            hero_desc: 'Full-stack разработчик игр, специализирующийся на программировании, звуковом дизайне и 2D-арт. Создание увлекательных игровых впечатлений от концепции до запуска.',
+            skills_title: 'Мой творческий набор инструментов',
+            prog_title: 'Программирование',
+            prog_desc: 'Создание надежных игровых систем с чистой архитектурой и оптимизированной производительностью',
+            art_title: '2D Арт и Анимация',
+            art_desc: 'Создание ярких персонажей, окружения и анимаций, которые оживают в играх',
+            sound_title: 'Звуковой Дизайн',
+            sound_desc: 'Создание захватывающих аудио-ландшафтов с динамической музыкой и выразительными звуковыми эффектами',
+            portfolio_title: 'Избранные проекты',
+            portfolio_desc: 'Отобранные работы, демонстрирующие мой разнообразный набор навыков в разработке игр',
+            project1_title: 'Putrid Cupcake',
+            project1_role: 'Тестировщик и Звукорежиссер',
+            project1_desc: 'Динамичный шутер от первого лица в стиле Cluelty Squad',
+            project2_title: 'ICOBEAT',
+            project2_role: 'Звукорежиссер и Композитор',
+            project2_desc: 'Энергичная ритм-игра, которая переносит игроков в ослепительные огни неоновой танцпола.',
+            project3_title: 'Blin Switch',
+            project3_role: 'UI/UX Разработчик и Программист',
+            project3_desc: 'Небольшая игра с историей, созданная для геймджема МИРЭА.',
+            view_all: 'Посмотреть все проекты',
+            contact_title: 'Давайте создадим что-то удивительное',
+            contact_desc: 'Есть проект? Я был бы рад узнать о ваших потребностях в разработке игр',
+            contact_name: 'Ваше Имя',
+            contact_email: 'Ваш Email',
+            contact_title: 'Название проекта',
+            contact_desc_placeholder: 'Расскажите мне о вашем проекте...',
+            contact_submit: 'Отправить сообщение',
+            copyright: '© 2025 Vostrikov Platon'
+        }
+    };
+    const langToggle = document.getElementById('lang-toggle');
+    let currentLang = 'ru'; // Default language
+    applyTranslations(currentLang);
+    langToggle.addEventListener('click', () => {
+        currentLang = currentLang === 'ru' ? 'en' : 'ru';
+        applyTranslations(currentLang);
+        langToggle.innerHTML = `<b>${translations[currentLang].lang_toggle}</b>`;
+    });
+    function applyTranslations(lang) {
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (translations[lang][key]) {
+                element.textContent = translations[lang][key];
+            }
+        });
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+            const key = element.getAttribute('data-i18n-placeholder');
+            if (translations[lang][key]) {
+                element.placeholder = translations[lang][key];
+            }
+        });
+        langToggle.innerHTML = `<b>${translations[lang].lang_toggle}</b>`;
+    }
+});
+    </script>
 </body>
 </html>

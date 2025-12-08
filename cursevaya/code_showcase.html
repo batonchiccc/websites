@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Vostrikov Platon">
+    <meta name="description" content="My project list">
+
+    <link rel="icon" href="favicon_portfolio.ico" sizes="any">
+    <title>Audio Portfoolio</title>
+    <link rel="stylesheet" href="csscollection.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <a href="overview.html"class="logo-icon">🎮Portfoolio</a>
+                </div>
+                <div style="display: flex;">
+                <button id="lang-toggle" class="lang-toggle" data-i18n="lang_toggle"><b>RU</b></button>
+                <button class="hamburger">☰</button>
+                <ul class="nav-links">
+                    <li class="navbar-item"><a href="" data-i18n="about">§ Обо мне</a></li>
+                    <li class="navbar-item"><a href="project_list.html" data-i18n="projects"># Проекты</a></li>
+                    <li class="navbar-item"><a href="code_showcase.html" data-i18n="code">// Код</a></li>
+                    <li class="navbar-item"><a href="music_showcase.html" data-i18n="sound">b Саунд</a></li>
+                    <li class="navbar-item"><a href="" data-i18n="visuals">‡ Графика</a></li>
+                </ul>
+                </div>
+            </nav>
+        </div>
+        <script src="scripts\header_script.js"></script>
+    </header>
+
+    <main class="container" style="margin-top: 20vh;">
+        <div class="snippets-container">
+            <article class="snippet-card">
+                <div class="card-header">
+                    <h2 class="snippet-title">Player Movement Controller</h2>
+                    <p class="snippet-description">Smooth character movement with jump mechanics</p>
+                    <div class="tags">
+                        <span class="tag unity">Unity</span>
+                        <span class="tag csharp">C#</span>
+                    </div>
+                </div>
+                <div class="code-container">
+                    <pre><code class="language-csharp">using UnityEngine;
+
+public class PlayerController : MonoBehaviour
+{
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float jumpForce = 7f;
+    private Rigidbody rb;
+    private bool isGrounded;
+
+    private void Start() => rb = GetComponent&lt;Rigidbody&gt;();
+
+    private void Update()
+    {
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+        
+        Vector3 movement = new Vector3(horizontal, 0, vertical) * moveSpeed * Time.deltaTime;
+        transform.Translate(movement);
+        
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground")) isGrounded = true;
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground")) isGrounded = false;
+    }
+}</code></pre>
+                </div>
+            </article>
+            <article class="snippet-card">
+                <div class="card-header">
+                    <h2 class="snippet-title">Damage Calculation System</h2>
+                    <p class="snippet-description">Modular damage handling with resistance types</p>
+                    <div class="tags">
+                        <span class="tag unreal">Unreal Engine</span>
+                        <span class="tag cpp">C++</span>
+                    </div>
+                </div>
+                <div class="code-container">
+                    <pre><code class="language-cpp">#include "DamageSystem.h"
+#include "Components/HealthComponent.h"
+
+float UDamageSystem::CalculateFinalDamage(float BaseDamage, const FDamageParams&amp; Params)
+{
+    float finalDamage = BaseDamage;
+    
+    // Apply resistance based on damage type
+    if (Params.DamageType == EDamageType::Fire)
+    {
+        finalDamage *= (1.0f - Params.TargetFireResistance);
+    }
+    else if (Params.DamageType == EDamageType::Ice)
+    {
+        finalDamage *= (1.0f - Params.TargetIceResistance);
+    }
+    
+    // Critical hit calculation
+    if (FMath::FRand() &lt; Params.CritChance)
+    {
+        finalDamage *= Params.CritMultiplier;
+    }
+    
+    // Armor mitigation
+    finalDamage *= FMath::Max(0.0f, 1.0f - (Params.TargetArmor / 100.0f));
+    
+    return FMath::RoundToFloat(finalDamage);
+}
+
+void UDamageSystem::ApplyDamage(AActor* Target, float DamageAmount, TSubclassOf&lt;UDamageType&gt; DamageType)
+{
+    if (UHealthComponent* HealthComp = Target-&gt;FindComponentByClass&lt;UHealthComponent&gt;())
+    {
+        HealthComp-&gt;TakeDamage(DamageAmount, FDamageEvent(DamageType), nullptr, nullptr);
+    }
+}</code></pre>
+                </div>
+            </article>
+            <article class="snippet-card">
+                <div class="card-header">
+                    <h2 class="snippet-title">Enemy AI Behavior</h2>
+                    <p class="snippet-description">State machine for patrol and chase behaviors</p>
+                    <div class="tags">
+                        <span class="tag godot">Godot</span>
+                        <span class="tag gdscript">GDScript</span>
+                    </div>
+                </div>
+                <div class="code-container">
+                    <pre><code class="language-python">extends CharacterBody2D
+
+enum STATE { PATROL, CHASE, ATTACK }
+var current_state = STATE.PATROL
+var patrol_points = []
+var current_patrol_index = 0
+var player = null
+var speed = 150
+var detection_radius = 200
+
+func _ready():
+    player = get_tree().get_first_node_in_group("player")
+    $DetectionArea.body_entered.connect(_on_detection_area_body_entered)
+    $DetectionArea.body_exited.connect(_on_detection_area_body_exited)
+
+func _physics_process(delta):
+    match current_state:
+        STATE.PATROL:
+            _patrol_behavior(delta)
+        STATE.CHASE:
+            _chase_behavior(delta)
+        STATE.ATTACK:
+            _attack_behavior(delta)
+
+func _patrol_behavior(delta):
+    if patrol_points.size() == 0:
+        return
+        
+    var target_point = patrol_points[current_patrol_index]
+    var direction = (target_point - position).normalized()
+    
+    velocity = direction * speed
+    move_and_slide()
+    
+    if position.distance_to(target_point) &lt; 10:
+        current_patrol_index = (current_patrol_index + 1) % patrol_points.size()
+
+func _chase_behavior(delta):
+    if player:
+        var direction = (player.position - position).normalized()
+        velocity = direction * speed * 1.5
+        move_and_slide()
+
+func _on_detection_area_body_entered(body):
+    if body.is_in_group("player"):
+        current_state = STATE.CHASE
+
+func _on_detection_area_body_exited(body):
+    if body.is_in_group("player") and get_overlapping_bodies().size() == 0:
+        current_state = STATE.PATROL</code></pre>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://t.me/Batonchiccc" class="social-icon">tg</a>
+                <a href="mailto:wosplaton@gmail.com" class="social-icon">@</a>
+                <a href="https://github.com/batonchiccc" class="social-icon">git</a>
+            </div>
+            <p class="copyright">© 2025 Vostrikov Platon</p>
+        </div>
+    </footer>
+</body>
+</html>
