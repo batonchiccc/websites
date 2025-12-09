@@ -812,9 +812,6 @@ audio::-webkit-media-controls-time-remaining-display {
 }
 
 @media (max-width: 600px) {
-    .nav-links {
-        display: none;
-    }
 
     .filter-container {
         gap: 8px;
@@ -822,11 +819,11 @@ audio::-webkit-media-controls-time-remaining-display {
 
     .filter-btn {
         padding: 6px 15px;
-        font-size: 0.9rem;
+        font-size: 16px;
     }
 
     .project-title {
-        font-size: 1.4rem;
+        font-size: 24px;
     }
 
     .project-content {
