@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -57,38 +57,44 @@
         const projects = [
             {
                 id: 1,
-                title: "Starlight Odyssey",
-                description: "An epic space exploration RPG with procedurally generated galaxies and real-time physics.",
-                image: "https://placehold.co/220x180/6133b5/ffffff?text=Starlight+Odyssey&font=montserrat",
-                tags: ["Unity", "C#", "3D"]
+                title: "icobeat",
+                description: "a rhythm-game where the main character is a pyramid on a disco ball.",
+                image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3297790/header.jpg?t=1764945969",
+                tags: ["Unity", "C#", "3D"],
+                desc_trans: "icobeat_desc"
             },
             {
                 id: 2,
-                title: "Neon Drift",
-                description: "High-octane futuristic racing game with customizable vehicles and dynamic weather systems.",
-                image: "https://placehold.co/220x180/e24dce/ffffff?text=Neon+Drift&font=montserrat",
-                tags: ["Unreal", "C++", "Multiplayer"]
+                title: "Форенш",
+                description: "A dynamic 2D platformer with rouge-like elements.",
+                image: "https://vkplay.ru/pre_1068x600_resize/hotbox/showcase/gamehighlight/pic/d5b81d67-e93f-4c24-b4fd-c6ef2d0c9915.png/quality/60/format/avif",
+                tags: ["Unreal", "C++", "Multiplayer"],
+                desc_trans: "forensh_desc"
             },
             {
                 id: 3,
                 title: "Pixel Dungeon",
                 description: "Roguelike dungeon crawler with pixel art aesthetics and permadeath mechanics.",
                 image: "https://placehold.co/220x180/1e1e2e/ffffff?text=Pixel+Dungeon&font=montserrat",
-                tags: ["Godot", "GDScript", "2D"]
+                tags: ["Godot", "GDScript", "2D"],
+                desc_trans: ""
             },
             {
                 id: 4,
                 title: "Cyber Heist",
                 description: "Tactical stealth game set in a dystopian future where you hack systems and avoid security.",
                 image: "https://placehold.co/220x180/0f0f1b/ffffff?text=Cyber+Heist&font=montserrat",
-                tags: ["Unity", "C#", "VR"]
+                tags: ["Unity", "C#", "VR"],
+                desc_trans: ""
             },
             {
                 id: 5,
                 title: "Mythic Realms",
                 description: "Open-world fantasy MMORPG with player-driven economy and dynamic world events.",
                 image: "https://placehold.co/220x180/c593ff/ffffff?text=Mythic+Realms&font=montserrat",
-                tags: ["Unreal", "C++", "3D"]
+                tags: ["Unreal", "C++", "3D"],
+                title_trans: "",
+                desc_trans: ""
             }
         ];
 
@@ -135,7 +141,7 @@
                     <div class="project-content">
                         <div>
                             <h3 class="project-title">${project.title}</h3>
-                            <p class="project-description">${project.description}</p>
+                            <p class="project-description" data-i18n="${project.desc_trans}">${project.description}</p>
                         </div>
                         <div class="project-tags">
                             ${project.tags.map(tag => `
@@ -160,6 +166,57 @@
             renderFilterButtons();
             renderProjects();
         });
+
+        document.addEventListener('DOMContentLoaded', () => {
+        const translations = {
+            en: {
+                lang_toggle: "EN",
+                about: "§ About me",
+                projects: "# Projects",
+                code: "// Code",
+                sound: "b Sound",
+                visuals: "‡ Visuals",
+                forensh_desc: "A dynamic 2D platformer with rouge-like elements.",
+                icobeat_desc: "A rhythm-game where the main character is a pyramid on a disco ball",
+            },
+            ru: {
+                lang_toggle: "RU",
+                about: "§ Обо мне",
+                projects: "# Проекты",
+                code: "// Код",
+                sound: "b Саунд",
+                visuals: "‡ Графика",
+                forensh_desc: "Динамичный 2D—платформер с элементами rouge like.",
+                icobeat_desc: "ритм-игра, в которой главным героем является пирамидка на дискотечном шаре",
+            }
+        };
+        let currentLang = localStorage.getItem('language') || 
+                         (navigator.language.startsWith('ru') ? 'ru' : 'en');
+        function applyTranslations() {
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    if (element.id === 'lang-toggle') {
+                        element.innerHTML = `<b>${translations[currentLang][key]}</b>`;
+                    } else {
+                        element.textContent = translations[currentLang][key];
+                    }
+                }
+            });
+            
+            document.documentElement.setAttribute('lang', currentLang);
+        }
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ru' : 'en';
+            localStorage.setItem('language', currentLang);
+            applyTranslations();
+        }
+        const langToggleBtn = document.getElementById('lang-toggle');
+        if (langToggleBtn) {
+            langToggleBtn.addEventListener('click', toggleLanguage);
+        }
+        applyTranslations();
+    });
     </script>
 </body>
 </html>

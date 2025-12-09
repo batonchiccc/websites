@@ -28,18 +28,17 @@ body {
     background: var(--dark);
     color: var(--light);
     line-height: 1.6;
-    overflow-x: hidden;
+    overflow-x: auto;
     background-image: 
     radial-gradient(circle at 10% 20%, rgba(106, 90, 249, 0.1) 0%, transparent 20%),
     radial-gradient(circle at 90% 80%, rgba(249, 165, 106, 0.1) 0%, transparent 20%);
 }
 
 .container {
-    width: 80%;
-    max-width: 1200px;
+    width: 100%;
+    max-width: 1600px;
     margin: 0 auto;
     padding: 0 20px;
-    
 }
 
 header {
@@ -85,6 +84,7 @@ nav {
 .logo-icon {
     margin-right: 8px;
     font-size: 32px;
+    text-decoration: none;
 }
 
 .nav-links {
@@ -316,7 +316,7 @@ nav {
 
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
 }
 
@@ -450,7 +450,7 @@ footer {
 }
 
 .social-icon:hover {
-    background: var(--primary);
+    background: var(--accent);
     transform: translateY(-5px);
 }
 
@@ -567,7 +567,7 @@ footer {
 
 .audio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 32px;
 }
 
@@ -836,9 +836,10 @@ audio::-webkit-media-controls-time-remaining-display {
 
 .snippets-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+    gap: 16px;
+    margin-top: 4vh;
+    margin-bottom: 20px;
 }
 
 .snippet-card {
@@ -891,9 +892,15 @@ audio::-webkit-media-controls-time-remaining-display {
 .tag.gdscript{ background: var(--gdscript); color: white; }
 
 .code-container {
-    padding: 20px;
-    background: rgba(15, 15, 27, 0.6);
-    overflow-x: auto;
+    padding: 12px;
+    background: rgb(19, 11, 30);
+    overflow-x:scroll;
+
+    width: 100%;
+    position: relative;
+    border-radius: 12x;
+    min-height: 100%;
+    border-left: 2px solid var(--accent);
 }
 
 pre {
