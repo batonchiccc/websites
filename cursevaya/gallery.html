@@ -36,15 +36,14 @@
     <main class="container" style="margin-top: 16vh;">
         <section class="gallery-container">
             <div class="gallery-header">
-                <h1>Interactive Gallery</h1>
-                <p>Explore our curated collection of stunning photographs with smooth animations and intuitive navigation</p>
+                <h1>Мои Арт работы</h1>
             </div>
 
             <div class="carousel">
                 <div class="slides" id="slides">
                     <div class="slide">
-                        <img src="https://placehold.co/800x600/6133b5/1e1e2e?text=Nebula" alt="Cosmic Nebula">
-                        <div class="slide-caption">Cosmic Nebula • Andromeda Galaxy</div>
+                        <img src="photos\photo_2025-08-02_15-46-14.jpg" alt="Lupa">
+                        <div class="slide-caption">the Lupa's Overthrow | Main menu</div>
                     </div>
                     <div class="slide">
                         <img src="https://placehold.co/800x600/1e1e2e/e6e6f0?text=Mountain" alt="Mountain Landscape">
@@ -95,10 +94,8 @@
             const slideCount = document.querySelectorAll('.slide').length;
             let currentIndex = 0;
             
-            // Initialize carousel position
             updateCarousel();
             
-            // Event listeners
             prevBtn.addEventListener('click', () => {
                 currentIndex = (currentIndex - 1 + slideCount) % slideCount;
                 updateCarousel();
@@ -116,23 +113,20 @@
                 });
             });
             
-            // Auto-advance every 5 seconds
+            //every 5 seconds
             setInterval(() => {
                 currentIndex = (currentIndex + 1) % slideCount;
                 updateCarousel();
             }, 5000);
             
             function updateCarousel() {
-                // Update slide position
                 const offset = -currentIndex * 100;
                 slides.style.transform = `translateX(${offset}%)`;
                 
-                // Update indicators
                 indicators.forEach((indicator, index) => {
                     indicator.classList.toggle('active', index === currentIndex);
                 });
                 
-                // Add animation class for smooth transitions
                 slides.classList.add('animate');
                 setTimeout(() => {
                     slides.classList.remove('animate');
